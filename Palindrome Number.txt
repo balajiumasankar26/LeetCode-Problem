@@ -1,0 +1,15 @@
+Palindrome Number 
+class Solution {
+    public boolean isPalindrome(int x) {
+        if(x<0){
+            return false;
+        }
+        int remainder=0,sum=0,num=x;
+        while(num>0){
+            remainder=num%10;
+            sum=10*sum+remainder;
+            num/=10;
+        }
+         return sum==x;
+    }
+}
