@@ -1,0 +1,28 @@
+Combination Sum 2
+import java.util.*;
+
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> arr = new ArrayList<>();
+        int ind = 0;
+        fun(ind, arr, candidates, target, ans);
+        return ans;
+    }
+
+    public void fun(int ind, List<Integer> arr, int[] candidates, int target, List<List<Integer>> ans) {
+        if (target == 0) {
+            ans.add(new ArrayList<>(arr));
+            return;
+        }
+        if (ind == candidates.length || target < 0) {
+            return;
+        }
+        if (candidates[ind] <= target) {
+            arr.add(candidates[ind]);
+            fun(ind, arr, candidates, target - candidates[ind], ans);
+            arr.remove(arr.size() - 1); 
+        }
+        fun(ind + 1, arr, candidates, target, ans);
+    }
+}
