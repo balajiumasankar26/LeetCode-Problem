@@ -1,0 +1,28 @@
+Trapping RainWater
+class Solution {
+    public int trap(int[] height) {
+        int left=0,right=height.length-1;
+        int trapWater=0,lmax=0,rmax=0;
+        while(left<right){
+            if(height[left]<height[right]){
+                if(height[left]>lmax){
+                    lmax=height[left];
+                }
+                else{
+                      trapWater+=lmax-height[left];
+                }
+                 left++;
+            }
+            else{
+                if(height[right]>rmax){
+                    rmax=height[right];
+                }
+                else{
+                    trapWater+=rmax-height[right];
+                }
+                right--;
+            }
+        }
+        return trapWater;
+    }
+}
